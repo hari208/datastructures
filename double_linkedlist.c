@@ -15,19 +15,21 @@ void addnodetohead(int x);
 void removenodefromhead();
 void insertnode(int x);
 void deletenode(int x);
+void reverse_double_linledlist(struct node **head_ref);
 void main()
 {
 	int flag,n,val,x;
 	while(1)
 	{	
 	 printf("\nenter your choice...............:");	
-	 printf("\nif you want create nods press=1:");
-	 printf("\ndisplay all the nodes   press=2:");
-	 printf("\nRemove node from tail...press=3:");
-	 printf("\nAdd node to head........press=4:");
-	 printf("\nRemove node frome head..press=5:");
-	 printf("\nInset node..............press=6:");
-	 printf("\nDelete node.............press=7:");
+	 printf("\nif you want create nods ..press=1:");
+	 printf("\ndisplay all the nodes   ..press=2:");
+	 printf("\nRemove node from tail.....press=3:");
+	 printf("\nAdd node to head..........press=4:");
+	 printf("\nRemove node frome head....press=5:");
+	 printf("\nInset node................press=6:");
+	 printf("\nDelete node...............press=7:");
+	 printf("\nReverse doublelinkedlist "press=8:");
 	 printf("\npress any other key to exit:...:\n");
 	
 	scanf("%d",&flag);	
@@ -53,6 +55,7 @@ void main()
 		scanf("%d",&x); 
 		deletenode(x);
 		break;
+	casne 8: reverse_double_linledlist(&head);	
 	default:exit(1);	
 	}
 	}
@@ -203,6 +206,22 @@ void deletenode(int x)
 	ptrav->nxt->prv=ptemp;
 	free(ptrav);
 }
+void reverse_double_linledlist(struct node **head_ref)
+{
+	struct node *temp=NULL;
+	struct node *current=**head_ref;
+	//swap next and prev for all nodes od double linked list
+	while(current!=NULL)
+	{
+		temp = current->prv;
+		current->prv=current->next;
+		current-next=temp;
+		current=current->prv;
+	}	
+	if(temp!=NULL)
+	 *head_ref = temp->prv;
+		
+}	
 
 
 
